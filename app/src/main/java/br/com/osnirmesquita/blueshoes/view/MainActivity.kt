@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.navigation.ui.AppBarConfiguration
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +13,6 @@ import br.com.osnirmesquita.blueshoes.data.NavMenuItemsDataBase
 import br.com.osnirmesquita.blueshoes.domain.NavMenuItem
 import br.com.osnirmesquita.blueshoes.domain.User
 import br.com.osnirmesquita.blueshoes.extensions.gone
-import br.com.osnirmesquita.blueshoes.extensions.visible
 import br.com.osnirmesquita.blueshoes.util.NavMenuItemDetailsLookup
 import br.com.osnirmesquita.blueshoes.util.NavMenuItemKeyProvider
 import br.com.osnirmesquita.blueshoes.util.NavMenuItemPredicate
@@ -25,11 +24,15 @@ import kotlinx.android.synthetic.main.nav_menu.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val FRAGMENT_TAG = "frag-tag"
+    }
+
+
     lateinit var navMenuItems: List<NavMenuItem>
     lateinit var selectNavMenuItems: SelectionTracker<Long>
     lateinit var navMenuItemsLogged: List<NavMenuItem>
     lateinit var selectNavMenuItemsLogged: SelectionTracker<Long>
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private val user = User("Osnir Mesquita", R.drawable.user, true)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,8 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         initNavMenu(savedInstanceState)
+
+        initFragment()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -154,6 +159,34 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun initFragment() {
+        val supFrag = supportFragmentManager
+        var fragment = supFrag.findFragmentByTag(FRAGMENT_TAG)
+
+        if (fragment == null) {
+            fragment = getFragment(R.id.item_about.toLong())
+        }
+
+        replaceFragment(fragment)
+    }
+
+    private fun getFragment(fragmentId: Long) = when (fragmentId) {
+        R.id.item_about.toLong() -> AboutFragment()
+        else -> AboutFragment()
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fl_fragment_container, fragment, FRAGMENT_TAG)
+            .commit()
+
+    }
+
+    fun updateToolbarTitleInFragment(titleStringId: Int) {
+        toolbar.title = getString(titleStringId)
+    }
+
     inner class SelectObserverNavMenuItems(
         private val callbackRemoveSelection: () -> Unit
     ) : SelectionTracker.SelectionObserver<Long>() {
@@ -165,6 +198,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             callbackRemoveSelection.invoke()
+
+            val fragment = getFragment(key)
+            replaceFragment(fragment)
 
             drawer_layout.closeDrawer(GravityCompat.START)
         }
