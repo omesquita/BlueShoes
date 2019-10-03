@@ -74,4 +74,7 @@
     <string name="contact_frag_address">Rua Vergueiro, 943 &#8211; Serra &#8211; CEP 29504&#8211;001 &#8211; Espírito Santo &#8211; ES.</string>
     <string name="contact_frag_address_formatted_to_google_maps">Rua Vergueiro, Serra, Espírito Santo, Brasil.</string>
     <string name="info_google_maps_install">Instale o aplicativo do Google Maps.</string>
+
+    <!-- PrivacyPolicyFragment -->
+    <string name="privacy_policy_frag_title">Políticas de privacidade</string>
 </resources>

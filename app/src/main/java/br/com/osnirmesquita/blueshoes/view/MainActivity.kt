@@ -173,6 +173,7 @@ class MainActivity : AppCompatActivity() {
     private fun getFragment(fragmentId: Long): Fragment = when (fragmentId) {
         R.id.item_about.toLong() -> AboutFragment()
         R.id.item_contact.toLong() -> ContactFragment()
+        R.id.item_privacy_policy.toLong() -> PrivacyPolicyFragment()
         else -> AboutFragment()
     }
 
@@ -181,7 +182,6 @@ class MainActivity : AppCompatActivity() {
             .beginTransaction()
             .replace(R.id.fl_fragment_container, fragment, FRAGMENT_TAG)
             .commit()
-
     }
 
     fun updateToolbarTitleInFragment(titleStringId: Int) {
