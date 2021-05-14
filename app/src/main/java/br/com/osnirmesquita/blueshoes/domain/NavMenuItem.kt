@@ -7,5 +7,7 @@ class NavMenuItem(
 ) {
     companion object {
         const val DEFAULT_ICON_ID = 1
+
+        oieeeeeee
     }
 }
