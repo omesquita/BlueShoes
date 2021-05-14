@@ -62,7 +62,7 @@ app/**/myaccount/bill/ @tqirqueiroz
 app/**/myaccount/business/ @pagbank/pfa
 app/**/myaccount/cache/ @jlccaires @jerodac
 app/**/myaccount/campaign/ @amorimgabriel
-app/**/myaccount/cardHandlerThirdParty/ @tqi-dosantos @LuizGadao @tqiccarvalho - nao existe
+app/**/myaccount/cardHandlerThirdParty/ @tqi-dosantos @LuizGadao @tqiccarvalho
 app/**/myaccount/cardinal/ @tqi-dosantos @LuizGadao @tqiccarvalho
 app/**/myaccount/cards/ @jlccaires @jerodac
 app/**/myaccount/cashback/ @LuizGadao @tqiccarvalho
