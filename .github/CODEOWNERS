@@ -11,7 +11,7 @@ google-services.json @omesquita @jnunes-dev
 
 # Arquivos de config do github
 .github/ @omesquita @jnunes-dev
-.githooks/  @omesquita @jnunes-dev
+.githooks/ @omesquita @jnunes-dev
 .github/workflows/jira_integration.yml @pagbank/CodeOwnersMazagon @Admins
 
 # Pastas de sec
