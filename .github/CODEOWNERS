@@ -97,6 +97,7 @@ app/**/myaccount/login/ @amorimgabriel
 app/**/myaccount/main/ @pedrofsn
 app/**/myaccount/metrics/ @jnunes-dev
 app/**/myaccount/model/ @pagbank/pfa
+app/**/myaccount/transactionExtract/ @pedrofsn
 app/**/myaccount/monitoring/ @jnunes-dev
 app/**/myaccount/notifications/ @amorimgabriel @pedrofsn
 app/**/myaccount/offers/ @pedrofsn
